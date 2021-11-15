@@ -31,3 +31,20 @@
     line-height: 25px;
     margin-top: 10px;
 }
+
+@media only screen and (max-device-width: 460px){
+.banner-bg{
+    height: auto;
+}
+ .banner-text {
+    width: 89%!important;
+    height: auto;
+    font-size: 15px;
+}
+.banner-text h1{
+    color: red!important;
+}
+.banner-text h3{
+
+}
+ }

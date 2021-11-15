@@ -50,7 +50,7 @@ const Singledesc = () => {
             <div className="container mt-5 pt-5">
                 <div className="row">
                     <div className="col-md-6">
-                    <div className="card shadow p-3 mb-4" style={{height:'500px'}}>
+                    <div className="card shadow p-3 mb-4" style={{height:'550px'}}>
                             <img className="card-img-top img-fluid" src={single.imglink} alt="Cardcap" style={{height:'300px'}} />
                             <div className="card-body">
                                 <span className="d-flex align-items-center justify-content-between ">
@@ -62,6 +62,7 @@ const Singledesc = () => {
                                
                             </div>
                             <Link to="/explore" className="btn btn-primary">Go to Explore</Link>
+                            <Link to="/dashboard" className="btn btn-info mt-2">Go to Dashboard</Link>
                         </div>
                     </div>
                     <div className="col-md-6">
