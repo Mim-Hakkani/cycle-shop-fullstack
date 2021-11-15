@@ -8,7 +8,7 @@ const AddProducts = () => {
     const onSubmit = data => {
         
         console.log(data);
-        fetch('http://localhost:5000/addservices',{
+        fetch('https://quiet-bayou-99262.herokuapp.com/addservices',{
             method:"POST",
             headers:{'content-type':'application/json'},
             body:JSON.stringify(data)

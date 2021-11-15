@@ -10,7 +10,7 @@ const Singledesc = () => {
 
     useEffect(()=>{
       
-        fetch(`http://localhost:5000/singleservice/${serviceid}`)
+        fetch(`https://quiet-bayou-99262.herokuapp.com/singleservice/${serviceid}`)
         .then(res=>res.json())
         .then(data=>setSingle(data[0]))
 
@@ -33,7 +33,7 @@ const Singledesc = () => {
         }
       
         
-       fetch('http://localhost:5000/ordernow',{
+       fetch('https://quiet-bayou-99262.herokuapp.com/ordernow',{
            method:"POST",
            headers:{"content-type":"application/json"},
            body:JSON.stringify(productDetails)
