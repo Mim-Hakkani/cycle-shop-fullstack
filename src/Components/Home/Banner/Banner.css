@@ -1,0 +1,33 @@
+.banner-bg{
+    background-image: url('../../image/bg.jpg');
+    height: 500px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
+.banner-text {
+    width: 45%;
+    /* text-align: center; */
+    margin: 51px auto;
+    /* line-height: 27px; */
+}
+.banner-text h1 {
+    font-size: 49px;
+    line-height: 72px;
+    overflow: hidden;
+    font-family: cursive;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: greenyellow;
+}
+.banner-text h3 {
+    font-size: 20px;
+    color: beige;
+    font-family: monospace;
+}
+.banner-text p {
+    color: gainsboro;
+    line-height: 25px;
+    margin-top: 10px;
+}

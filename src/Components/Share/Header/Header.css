@@ -1,0 +1,15 @@
+ul{
+    
+}
+li li{}
+li a{
+   display: block;
+    text-decoration: none;
+    color: #000;
+    margin: 0px 10px
+;
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-family: inherit;
+}
