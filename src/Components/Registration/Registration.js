@@ -1,14 +1,19 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
+import useAuth from '../../context/useAuth'
 
 const Registration = () => {
+    const {registerUser}=useAuth()
+    const history = useHistory();
     const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
     const onSubmit = data => {
         
         console.log(data)
+        registerUser(data.email, data.password, data.name, history)
         reset();
     }
+
 
     return (
         <div>
@@ -54,6 +59,9 @@ const Registration = () => {
                 
                 <input type="submit"  className="btn btn-danger px-4" />
             </form>
+
+
+           
             </div>
         </div>
     );

@@ -9,7 +9,7 @@
  * It's to your Badget
  * 180 day free services
  * connect to location detection so to tension to stolen 
- 
+  * we always see that clint is always happy ,,then we are satisfied
 ## About my Shop website functionality
 
  * This is totally responsive

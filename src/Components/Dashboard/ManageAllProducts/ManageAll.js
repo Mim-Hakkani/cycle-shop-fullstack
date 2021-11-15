@@ -19,7 +19,14 @@ const ManageAll = () => {
           headers:{'content-type':"application/json"}
       })
       .then(res=>res.json())
-      .then(result=>setManagedelete(result))
+      .then(result=>{
+        if(result.deletedCount > 0){
+            alert('delete successful')
+            // const remainingOrders=orders.filter(order=>order._id !== id)
+            setManagedelete(result)
+        }
+    }
+        )
     }
 
     return (

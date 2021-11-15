@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link ,useParams} from 'react-router-dom';
+import useAuth from '../../../../context/useAuth';
 
 const Singledesc = () => {
+    const {user}=useAuth()
     const {serviceid} =useParams();
     const [single,setSingle]=useState({})
 
@@ -12,12 +14,22 @@ const Singledesc = () => {
         .then(res=>res.json())
         .then(data=>setSingle(data[0]))
 
-    },[])
+    },[serviceid])
+  
 
     const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
 
     const onSubmit = data => {
+
+        const productDetails={
+            ...single,
+            userName:data.name,
+            userEmail:data.email,
+            phone:data.phone,
+            date:data.date
+        }
         
+        console.log(productDetails);
         
        fetch('http://localhost:5000/ordernow',{
            method:"POST",
@@ -47,37 +59,28 @@ const Singledesc = () => {
                                 <p className="card-text">{single.descripsion}</p>
                                
                             </div>
+                            <Link to="/explore" className="btn btn-primary">Go to Explore</Link>
                         </div>
                     </div>
                     <div className="col-md-6">
                     <form onSubmit={handleSubmit(onSubmit)} >
                
                <input 
-                  defaultValue="" 
                   {...register("name") } 
                   type="text"   
                   class="form-control"
                   placeholder="Name"
-                  defaultValue={single.title}
+                  defaultValue={user.displayName}
                   
                   />
                   <br/>
-                  <input 
-                  defaultValue="" 
-                  {...register("imageLink") } 
-                  type="text"   
-                  class="form-control"
-                  placeholder="Link"
-                  defaultValue={single.imglink}
-                  
-                  /><br/>
+                 
                <input 
 
-                  defaultValue="" 
+                  defaultValue={user.email} 
                   {...register("email") } 
                   type="email" 
                   class="form-control"
-                  placeholder="Email" 
                   
                   />
                   <br/>
@@ -92,20 +95,20 @@ const Singledesc = () => {
                   />
                   <br/>
                <input 
-
-                  defaultValue={single.price} 
-                  {...register("price") } 
-                  type="price" 
+ 
+                  {...register("phone") } 
+                  type="text" 
                   class="form-control"
-                  placeholder="price"
+                  placeholder="Phone Number"
 
                   
                   />
                
                <br/>
               
-               
+              
                <input onClick={()=>handleSubmit()} type="submit" value="Order Now" className="btn btn-danger px-4" />
+              
            </form>
                     </div>
                 </div>

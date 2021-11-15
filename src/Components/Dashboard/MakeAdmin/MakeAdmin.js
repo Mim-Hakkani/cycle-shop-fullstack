@@ -1,48 +1,48 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Button, TextField, Alert } from '@mui/material';
+import React, { useState } from 'react';
+
 
 const MakeAdmin = () => {
-    const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
-    const onSubmit = data => {
-        console.log(data)
-        reset();
-    };
+    const [email, setEmail] = useState('');
+    const [success, setSuccess] = useState(false);
+   ;
+
+    const handleOnBlur = e => {
+        setEmail(e.target.value);
+    }
+    const handleAdminSubmit = e => {
+        const user = { email };
+        fetch('http://localhost:5000/users/admin', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    console.log(data);
+                    setSuccess(true);
+                }
+            })
+
+        e.preventDefault()
+    }
 
     return (
         <div>
-        <h1 className="py-3 text-center text-right">Make A Admin</h1>
-    
-    <div className="border border-info w-50 p-5 m-auto">
-        <form onSubmit={handleSubmit(onSubmit)} >
-           
-           
-            <input 
-
-               defaultValue="" 
-               {...register("email") } 
-               type="email" 
-               class="form-control"
-               placeholder="Email" 
-               
-               />
-               <br/>
-            <input 
-
-               defaultValue="" 
-               {...register("password") } 
-               type="password" 
-               class="form-control"
-               placeholder="Password"
-               
-               />
-            
-            <br/>
-           
-            
-            <input type="submit"  className="btn btn-danger px-4" />
+        <h2>Make an Admin</h2>
+        <form onSubmit={handleAdminSubmit}>
+            <TextField
+                sx={{ width: '50%' }}
+                label="Email"
+                type="email"
+                onBlur={handleOnBlur}
+                variant="standard" />
+            <Button type="submit" variant="contained">Make Admin</Button>
         </form>
-        </div>
+        {success && <Alert severity="success">Made Admin successfully!</Alert>}
     </div>
     );
 };

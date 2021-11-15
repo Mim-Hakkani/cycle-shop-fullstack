@@ -1,9 +1,12 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../context/useAuth';
 import logo from '../../image/logo.png';
 import '../Header/Header.css'
 const Header = () => {
+  const {user,logOut}=useAuth()
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
@@ -25,11 +28,22 @@ const Header = () => {
                 <Link to ="/explore">Explore</Link>
               </li>
 
-              <li className="nav-item">
+              {
+                user.email && <li className="nav-item">
                 <Link to ="/dashboard">Dashboard</Link>
               </li>
-             
-              
+              }
+              <li className="nav-item">
+                  { user?.email?
+
+                          <span><button className="btn btn-primary" onClick={logOut}>Logout as </button>
+                            {user.displayName}
+                          </span>
+                          :
+                          <Link as Link  to="/signin">Login</Link>
+                  }
+              </li>
+            
             </ul>
             
           </div>

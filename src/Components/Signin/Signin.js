@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link,useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../context/useAuth';
 
 const Signin = () => {
-    const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
+    // const [loginData, setLoginData] = useState({});
+    const { loginUser} = useAuth();
+
+    const location = useLocation();
+    const history = useHistory();
+    const { register, handleSubmit, formState: { errors },reset } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        loginUser(data.email, data.password, location, history);
         reset();
     };
 
@@ -15,8 +21,6 @@ const Signin = () => {
     
     <div className="border border-info w-50 p-5 m-auto">
         <form onSubmit={handleSubmit(onSubmit)} >
-           
-           
             <input 
 
                defaultValue="" 

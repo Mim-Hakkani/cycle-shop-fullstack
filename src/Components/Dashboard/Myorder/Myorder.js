@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../context/useAuth';
 
 const Myorder = () => {
 
-    //for testing purpose
-    const email = 'mim4g@gmail.com'
+    
+    const {user}=useAuth()
 
-    console.log(email);
+    console.log(user.email);
 
     const [orders,myordrs]=useState([])
     const [deleteorder,setDeleteorder]=useState(false)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/myorder/${email}`)
+        fetch(`http://localhost:5000/myorder/${user.email}`)
         .then(res=>res.json())
         .then(data=>myordrs(data))
-    },[deleteorder])
+    },[deleteorder,user.email])
 
 
     const handledelete =(id)=>{
@@ -28,12 +29,12 @@ const Myorder = () => {
             })
             .then(res=>res.json())
             .then(data=>{
-                if(data.deletedCount)
+                if(data.deletedCount>0)
                 {
                     alert('do you want to delete ? ');
-                  
+                    setDeleteorder(data)
                 }
-                setDeleteorder(data)
+               
             })
        
     }

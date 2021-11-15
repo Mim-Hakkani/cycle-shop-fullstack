@@ -6,9 +6,12 @@ import Singledesc from "./Components/Home/Services/SingleDescription/Singledesc"
 import NotFound from "./Components/NotFound/NotFound";
 import Registration from "./Components/Registration/Registration";
 import Signin from "./Components/Signin/Signin";
+import AuthProvider from "./context/AuthProvider";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 function App() {
   return (
     <div className="App">
+       <AuthProvider>
       <BrowserRouter>
     
 
@@ -26,9 +29,9 @@ function App() {
           <Explore></Explore>
         </Route>
 
-        <Route exact path="/singledetails/:serviceid">
+        <PrivateRoute exact path="/singledetails/:serviceid">
           <Singledesc></Singledesc>
-        </Route>
+        </PrivateRoute>
 
         <Route exact path="/signin">
           <Signin></Signin>
@@ -38,9 +41,9 @@ function App() {
            <Registration></Registration>
         </Route>
 
-        <Route  path="/dashboard">
+        <PrivateRoute  path="/dashboard">
            <Dashboard></Dashboard>
-        </Route>
+        </PrivateRoute>
 
         <Route path="*">
           <NotFound></NotFound>
@@ -49,7 +52,7 @@ function App() {
       </Switch>
       
       </BrowserRouter>
-        
+      </AuthProvider> 
     </div>
   );
 }

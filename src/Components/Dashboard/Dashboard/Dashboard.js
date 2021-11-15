@@ -32,11 +32,13 @@ import {
     useParams,
     useRouteMatch
   } from "react-router-dom";
+import useAuth from '../../../context/useAuth';
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {admin}=useAuth()
   let { path, url } = useRouteMatch();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -48,8 +50,26 @@ function Dashboard(props) {
        <Link to ="/home">
        <Button variant="contained" sx={{color:'primary',margin:'10px'}}>Go WebSite Main</Button>
        </Link>
-      <Divider />
 
+
+
+      {
+        admin? <Box>
+          <List>
+                <Link to={`${url}/makeadmin`}>Make Admin</Link> 
+      </List>
+      <List>
+          <Link to={`${url}/manageall`}>Manage Products</Link>
+      </List>
+      <List>
+          <Link to={`${url}/manageorder`}>Manage All Order</Link>
+      </List>
+      <List>
+        <Link to={`${url}/addproducts`}>Add Products</Link>      
+     </List>
+        </Box>
+        :
+        <Box>
       <List>
            <Link to={`${url}/myorder`}>My Order</Link>
            
@@ -60,21 +80,12 @@ function Dashboard(props) {
       <List>
         <Link to={`${url}/review`}>Clint Review</Link><br/> 
       </List>
+        </Box>
+      }
 
-      <Divider />
 
-      <List>
-                <Link to={`${url}/makeadmin`}>Make Admin</Link> 
-      </List>
-      <List>
-          <Link to={`${url}/manageall`}>Manage All Orders</Link>
-      </List>
-      <List>
-          <Link to={`${url}/manageorder`}>Manage Order</Link>
-      </List>
-      <List>
-        <Link to={`${url}/addproducts`}>Add Products</Link>      
-     </List>
+
+      
 
       <Button variant="contained" sx={{color:'primary',margin:'10px'}}>Log Out</Button>
     </div>
@@ -103,7 +114,7 @@ function Dashboard(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            Hakkani Bycycle Server Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
