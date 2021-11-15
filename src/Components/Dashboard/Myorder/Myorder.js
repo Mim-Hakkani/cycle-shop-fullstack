@@ -7,7 +7,7 @@ const Myorder = () => {
     
     const {user}=useAuth()
 
-    console.log(user.email);
+   
 
     const [orders,myordrs]=useState([])
     const [deleteorder,setDeleteorder]=useState(false)
@@ -45,8 +45,9 @@ const Myorder = () => {
             <table class="table table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">Order Id</th>
-                    <th scope="col">Order name</th>
+                    <th scope="col">Order_Id</th>
+                    <th scope="col">P_Name</th>
+                    <th scope="col">user_name</th>
                     <th scope="col">Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Total</th>
@@ -57,11 +58,10 @@ const Myorder = () => {
                     {
                         orders.map(order=><tr>
                             <th scope="row">{order._id}</th>
-                            <td>{order.name}</td>
+                            <td>{order.title}</td>
+                            <td>{order.userName}</td>
                             <td>{order.date}</td>
-                            <td>
-                                <button className="btn btn-info">Pending</button>
-                            </td>
+                            <td>{order.status}</td>
                             <td>{order.price}</td>
                             <td>
                             

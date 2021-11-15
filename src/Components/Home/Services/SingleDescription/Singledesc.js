@@ -22,19 +22,21 @@ const Singledesc = () => {
     const onSubmit = data => {
 
         const productDetails={
-            ...single,
+           
             userName:data.name,
             userEmail:data.email,
             phone:data.phone,
-            date:data.date
+            date:data.date,
+            price:single.price,
+            title:single.title,
+            status:'Pending'
         }
-        
-        console.log(productDetails);
+      
         
        fetch('http://localhost:5000/ordernow',{
            method:"POST",
            headers:{"content-type":"application/json"},
-           body:JSON.stringify(data)
+           body:JSON.stringify(productDetails)
        })
        .then(res=>res.json())
        .then(result =>console.log(result))
@@ -69,7 +71,6 @@ const Singledesc = () => {
                   {...register("name") } 
                   type="text"   
                   class="form-control"
-                  placeholder="Name"
                   defaultValue={user.displayName}
                   
                   />
@@ -86,7 +87,6 @@ const Singledesc = () => {
                   <br/>
                   <input 
 
-                  defaultValue="" 
                   {...register("date") } 
                   type="date" 
                   class="form-control"

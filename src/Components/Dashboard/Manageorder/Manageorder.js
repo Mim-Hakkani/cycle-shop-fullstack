@@ -11,7 +11,7 @@ const Manageorder = () => {
         fetch('http://localhost:5000/allorder')
         .then(res=>res.json())
         .then(data=>setModers(data))
-    },[managedelete])
+    },[managedelete,statusId])
 
     const handledelete =(id)=>{
 
@@ -64,12 +64,12 @@ const Manageorder = () => {
                     {
                         morders.map(order=><tr>
                             <th scope="row">{order._id}</th>
-                            <td>{order.name}</td>
+                            <td>{order.title}</td>
                             <td>{order.date}</td>
                             <td>
-                            {order.status==="pending" ? <button onClick={()=>handleUpdate(order._id)} className="btn btn-danger">Pending</button>
+                            {order.status==="Pending" ? <button onClick={()=>handleUpdate(order._id)} className="btn btn-danger">Pending</button>
                                 :
-                                <button onClick={()=>handleUpdate(order._id)} className="btn btn-success">Approve</button>
+                                <button onClick={()=>handleUpdate(order._id)} className="btn btn-success">Shipped</button>
                             }
                             </td>
                             <td>{order.price}</td>

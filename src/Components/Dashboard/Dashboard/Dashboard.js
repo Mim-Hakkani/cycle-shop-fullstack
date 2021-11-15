@@ -38,7 +38,7 @@ const drawerWidth = 240;
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const {admin}=useAuth()
+  const {admin,logOut}=useAuth()
   let { path, url } = useRouteMatch();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -87,7 +87,7 @@ function Dashboard(props) {
 
       
 
-      <Button variant="contained" sx={{color:'primary',margin:'10px'}}>Log Out</Button>
+      <Button onClick={logOut} variant="contained" sx={{color:'primary',margin:'10px'}}>Log Out</Button>
     </div>
   );
 
