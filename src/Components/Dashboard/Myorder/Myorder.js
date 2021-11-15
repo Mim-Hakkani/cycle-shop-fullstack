@@ -13,7 +13,7 @@ const Myorder = () => {
     const [deleteorder,setDeleteorder]=useState(false)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/myorder/${user.email}`)
+        fetch(`https://quiet-bayou-99262.herokuapp.com/myorder/${user.email}`)
         .then(res=>res.json())
         .then(data=>myordrs(data))
     },[deleteorder,user.email])
@@ -22,7 +22,7 @@ const Myorder = () => {
     const handledelete =(id)=>{
 
        
-            fetch(`http://localhost:5000/deleteorder/${id}`,{
+            fetch(`https://quiet-bayou-99262.herokuapp.com/deleteorder/${id}`,{
                 method:"DELETE",
                 headers:{"content-type":"application/json"}
                 

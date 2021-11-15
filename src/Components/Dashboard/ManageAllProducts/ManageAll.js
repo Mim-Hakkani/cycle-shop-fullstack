@@ -6,7 +6,7 @@ const ManageAll = () => {
     const[managedelete,setManagedelete]=useState(false)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/getservices')
+        fetch('https://quiet-bayou-99262.herokuapp.com/getservices')
         .then(res=>res.json())
         .then(data=>setServices(data))
     },[managedelete])
@@ -14,7 +14,7 @@ const ManageAll = () => {
     const handledelete=(id)=>{
 
      
-      fetch(`http://localhost:5000/managealldelete/${id}`,{
+      fetch(`https://quiet-bayou-99262.herokuapp.com/managealldelete/${id}`,{
           method:"DELETE",
           headers:{'content-type':"application/json"}
       })

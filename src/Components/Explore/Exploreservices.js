@@ -5,7 +5,7 @@ const Exploreservices = () => {
     const [services,setServices]=useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/getservices')
+        fetch('https://quiet-bayou-99262.herokuapp.com/getservices')
         .then(res=>res.json())
         .then(data=>setServices(data))
     },[])

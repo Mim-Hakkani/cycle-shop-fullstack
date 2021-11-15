@@ -117,7 +117,7 @@ const Usefirebase = () => {
    
       const user = {user,displayName};
 
-      fetch('http://localhost:5000/users',{
+      fetch('https://quiet-bayou-99262.herokuapp.com/users',{
         method:'POST',
         headers:{
           'content-type':'application/json'

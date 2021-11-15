@@ -5,7 +5,7 @@ const Reviews = () => {
     const { register, handleSubmit, watch, formState: { errors },reset } = useForm();
     const onSubmit = data => {
         
-        fetch('http://localhost:5000/getreview',{
+        fetch('https://quiet-bayou-99262.herokuapp.com/getreview',{
 
         method:"POST",
         headers:{"content-type":"application/json"},

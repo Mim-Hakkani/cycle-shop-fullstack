@@ -8,7 +8,7 @@ const Manageorder = () => {
 
     
     useEffect(()=>{
-        fetch('http://localhost:5000/allorder')
+        fetch('https://quiet-bayou-99262.herokuapp.com/allorder')
         .then(res=>res.json())
         .then(data=>setModers(data))
     },[managedelete,statusId])
@@ -16,7 +16,7 @@ const Manageorder = () => {
     const handledelete =(id)=>{
 
         // console.log(id)
-        fetch(`http://localhost:5000/manageallorderdelete/${id}`,{
+        fetch(`https://quiet-bayou-99262.herokuapp.com/manageallorderdelete/${id}`,{
             method:"DELETE",
             headers:{"content-type":"application/json"}
         })
@@ -33,7 +33,7 @@ const Manageorder = () => {
     //update funtion status ..Approved functioanality
 
     const handleUpdate =(id)=>{
-    fetch(`http://localhost:5000/updatestatus/${id}`,{
+    fetch(`https://quiet-bayou-99262.herokuapp.com/updatestatus/${id}`,{
                 method:'PUT'
             })
             .then(res=>res.json())
