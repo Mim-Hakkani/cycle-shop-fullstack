@@ -5,7 +5,7 @@
 ## About my Shop website details
 
  * See many types of Cycle
- * very low cost and awesome looking
+ * very low cost and awesome looking website
  * It's to your Badget
  * 180 day free services
  * connect to location detection so to tension to stolen 
